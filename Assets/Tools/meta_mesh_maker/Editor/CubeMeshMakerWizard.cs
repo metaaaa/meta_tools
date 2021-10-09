@@ -10,7 +10,7 @@ public class CubeMeshMakerWizard : ScriptableWizard
     public int ynum = 10;
     public int znum = 10;
 
-    [MenuItem("Custom/Cube Mesh Maker")]
+    [MenuItem("metaaa/mesh maker/Cube Mesh Maker")]
     static void Init()
     {
         DisplayWizard<CubeMeshMakerWizard>("Cube Mesh Maker");
