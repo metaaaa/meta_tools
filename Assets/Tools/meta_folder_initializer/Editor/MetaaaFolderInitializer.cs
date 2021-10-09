@@ -27,7 +27,7 @@ public class MetaaaFolderInitializer : EditorWindow
         FolderName("Materials");
         FolderName("Prefabs");
         FolderName("Resources");
-        // FolderName("RenderTextures");
+        FolderName("Models");
         FolderName("Scripts");
         FolderName("Scenes");
         FolderName("Shaders");
