@@ -310,3 +310,12 @@ float inverseLerp(float val, float vmin, float vmax){
     val = clamp(vmin, vmax, val);
     return (val - vmin) / (vmax - vmin);
 }
+
+float3 getCameraPos()
+{
+    float3 cameraPos = _WorldSpaceCameraPos;
+    #if defined(USING_STEREO_MATRICES)
+    cameraPos = (unity_StereoWorldSpaceCameraPos[0] + unity_StereoWorldSpaceCameraPos[1]) * 0.5;
+    #endif
+    return cameraPos;
+}
