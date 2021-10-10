@@ -34,7 +34,7 @@ public class Tex2dToExr
 public class RenderTex2dToExr
 {
     [MenuItem("metaaa/something/rendertex2exr")]
-    void SaveRenderTexture()
+    public static void SaveSelection()
     {
         var renderTex = (RenderTexture)Selection.activeObject;
         if (renderTex != null)
@@ -51,7 +51,7 @@ public class RenderTex2dToExr
 
             // Encode texture into the EXR
             byte[] bytes = tex.EncodeToEXR(Texture2D.EXRFlags.CompressZIP);
-            File.WriteAllBytes(Application.dataPath + "/render_tex.exr", bytes);
+            System.IO.File.WriteAllBytes(Application.dataPath + "/render_tex.exr", bytes);
 
             Object.DestroyImmediate(tex);
         }
