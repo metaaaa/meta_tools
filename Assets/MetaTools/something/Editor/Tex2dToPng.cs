@@ -30,3 +30,30 @@ public class Tex2dToExr
         Object.DestroyImmediate(tex);
     }
 }
+
+public class RenderTex2dToExr
+{
+    [MenuItem("metaaa/something/rendertex2exr")]
+    void SaveRenderTexture()
+    {
+        var renderTex = (RenderTexture)Selection.activeObject;
+        if (renderTex != null)
+        {
+            int width = renderTex.width;
+            int height = renderTex.height;
+
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGBAFloat, false);
+
+            // Read screen contents into the texture
+            Graphics.SetRenderTarget(renderTex);
+            tex.ReadPixels(new Rect(0, 0, width, height), 0, 0);
+            tex.Apply();
+
+            // Encode texture into the EXR
+            byte[] bytes = tex.EncodeToEXR(Texture2D.EXRFlags.CompressZIP);
+            File.WriteAllBytes(Application.dataPath + "/render_tex.exr", bytes);
+
+            Object.DestroyImmediate(tex);
+        }
+    }
+}
