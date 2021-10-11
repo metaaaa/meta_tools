@@ -274,6 +274,23 @@ float3 rotateQuaternion(float4 q, float3 pos)
     return (q.x*q.x - dot(q.yzw, q.yzw)) * pos + 2.0 * q.yzw * dot(q.yzw, pos) + 2 * q.x * cross(q.yzw, pos);
 }
 
+float3 angleToRadian(float3 angle)
+{
+    return PI*angle/180.0;
+}
+
+// Unityの回転順はZXY
+float4 eulerToQuaternion(float3 rad)
+{
+    rad.x += PI;//Unityの座標系にあわせる
+    rad = rad*0.5;
+    rad.xy = -rad.yx;//Unityの座標系にあわせる
+    return float4(cos(rad.z)*cos(rad.x)*cos(rad.y) + sin(rad.z)*sin(rad.x)*sin(rad.y),
+                  sin(rad.z)*cos(rad.x)*cos(rad.y) - cos(rad.z)*sin(rad.x)*sin(rad.y),
+                  cos(rad.z)*sin(rad.x)*cos(rad.y) + sin(rad.z)*cos(rad.x)*sin(rad.y),
+                  cos(rad.z)*cos(rad.x)*sin(rad.y) - sin(rad.z)*sin(rad.x)*cos(rad.y));
+}
+
 float ramp(float val, float vmin, float vmax, float rmin, float rmax)
 {
     // inverese lerp
