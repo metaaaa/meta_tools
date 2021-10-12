@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class CubeMeshMaker {
 
-    public Mesh GenerageMesh(int xnum, int ynum, int znum)
+    public Mesh GenerageMesh(int xnum, int ynum, int znum, Vector3 scale)
     {
         Mesh mesh = new Mesh();
 
         int vertexCount = xnum * ynum * znum;
 
-        float xdiv = 1f / xnum;
-        float ydiv = 1f / ynum;
-        float zdiv = 1f / znum;
+        float xdiv = scale.x / xnum;
+        float ydiv = scale.y / ynum;
+        float zdiv = scale.z / znum;
 
         List<Vector3> vertices = new List<Vector3>();
         List<int> indices = new List<int>();
@@ -20,6 +20,7 @@ public class CubeMeshMaker {
         for (int i = 0; i < vertexCount; i++)
         {
             Vector3 pos = new Vector3((i % xnum) * xdiv, (i / xnum % ynum) * ydiv, (i / (xnum * ynum) % znum) * zdiv);
+            pos -= scale*0.5f;
             vertices.Add(pos);
             indices.Add(index++);
         }
