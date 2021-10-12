@@ -120,7 +120,13 @@ public class AnimationTextureBaker : MonoBehaviour
             AssetDatabase.CreateAsset(normTex, Path.Combine(subFolderPath, nRt.name + ".asset"));
             AssetDatabase.CreateAsset(tanTex, Path.Combine(subFolderPath, tRt.name + ".asset"));
             AssetDatabase.CreateAsset(mat, Path.Combine(subFolderPath, string.Format("{0}.{1}.animTex.asset", name, state.name)));
-            PrefabUtility.CreatePrefab(Path.Combine(folderPath, go.name + ".prefab").Replace("\\", "/"), go);
+
+            // obsolete
+            // PrefabUtility.CreatePrefab(Path.Combine(folderPath, go.name + ".prefab").Replace("\\", "/"), go);
+            // 動作未確認
+            PrefabUtility.SaveAsPrefabAsset(go ,Path.Combine(folderPath, go.name + ".prefab").Replace("\\", "/"));
+            PrefabUtility.UnpackPrefabInstance(go, PrefabUnpackMode.OutermostRoot, InteractionMode.AutomatedAction);
+
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 #endif
