@@ -23,14 +23,14 @@ public class ShaderTempleteExtension : MonoBehaviour
     [MenuItem("Assets/Create/Shader/Custom Render Texture Init Shader")]
     private static void CreateCRTInitShader()
     {
-        string path = Application.dataPath + "/MetaTools/meta_shader_functions/templetes/CRTInitTemplete.shader.templete";
+        string path = MetaToolsEnv.GetMetaToolsPath("meta_shader_functions/Templetes/CRTInitTemplete.shader.templete");
         ProjectWindowUtil.CreateScriptAssetFromTemplateFile(path, "NewCRTInitShader.shader");
     }
 
     [MenuItem("Assets/Create/Shader/Custom Render Texture Update Shader")]
     private static void CreateCRTUpdateShader()
     {
-        string path = Application.dataPath + "/MetaTools/meta_shader_functions/templetes/CRTUpdateTemplete.shader.templete";
+        string path = MetaToolsEnv.GetMetaToolsPath("meta_shader_functions/Templetes/CRTUpdateTemplete.shader.templete");
         ProjectWindowUtil.CreateScriptAssetFromTemplateFile(path, "NewCRTUpdateShader.shader");
     }
 }
