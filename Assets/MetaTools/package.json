@@ -1,0 +1,14 @@
+{
+    "name": "com.metaaaa.meta_tools",
+    "displayName": "meta_tools",
+    "version": "1.0.1",
+    "unity": "2019.4",
+    "description": "meta_tools",
+    "keywords": ["metaaa"],
+    "author": {
+        "name": "metaaa",
+        "url": "https://github.com/metaaaa"
+    },
+    "dependencies": {
+    }
+}
