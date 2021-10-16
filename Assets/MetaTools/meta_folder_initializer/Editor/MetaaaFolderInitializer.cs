@@ -3,46 +3,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using System.Linq;
 
-public class MetaaaFolderInitializer : EditorWindow
+public class MetaaaFolderInitializer : ScriptableWizard
 {
-    private const string BASE_FOLDER_NAME = "__WorkSpace";
-    private static readonly string[] CGINCS = {
-        "meta_function.cginc"
+    public string baseFolderName = "__WorkSpace";
+    public string[] folders = {
+        "Animations",
+        "AnimatorControllers",
+        "Editors",
+        "Textures",
+        "Materials",
+        "Prefabs",
+        "Resources",
+        "Models",
+        "Scripts",
+        "Scenes",
+        "Shaders",
+        "Shaders/cgincs",
     };
 
     [MenuItem("metaaa/folder_initialize")]
-    static void CreateFolder()
+    static void Init()
     {
+        DisplayWizard<MetaaaFolderInitializer>("FolderInitializer");
+    }
 
-        if (AssetDatabase.IsValidFolder("Assets/"+BASE_FOLDER_NAME))
+    void OnWizardCreate()
+    {
+        if (AssetDatabase.IsValidFolder("Assets/"+baseFolderName))
         {
             return;
         }
 
-        FolderName("Animations");
-        FolderName("AnimatorControllers");
-        FolderName("Editors");
-        FolderName("Textures");
-        FolderName("Materials");
-        FolderName("Prefabs");
-        FolderName("Resources");
-        FolderName("Models");
-        FolderName("Scripts");
-        FolderName("Scenes");
-        FolderName("Shaders");
-        FolderName("Shaders/cgincs");
-
-        foreach (string cginc in CGINCS)
+        foreach (string folder in folders)
         {
-            CopyCginc(cginc);
+            FolderName(folder);
+        }
+
+        var cgincs = Directory.GetFiles(MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/"), "*.cginc", SearchOption.AllDirectories);
+        foreach (string cginc in cgincs)
+        {
+            string fileName = cginc.Split('/').Last();
+            CopyCginc(fileName);
         }
 
     }
 
-    static void FolderName(string folderName)
+    void FolderName(string folderName)
     {
-        string path = "Assets/"+BASE_FOLDER_NAME+"/" + folderName;
+        string path = "Assets/"+baseFolderName+"/" + folderName;
 
         if (!Directory.Exists(path))
         {
@@ -52,10 +62,10 @@ public class MetaaaFolderInitializer : EditorWindow
         AssetDatabase.ImportAsset(path);
     }
 
-    static void CopyCginc(string cgincName)
+    void CopyCginc(string cgincName)
     {
-        string source = MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/" + cgincName);
-        string dest = "Assets/"+BASE_FOLDER_NAME+"/" + "Shaders/cgincs/" + cgincName;
+        string source = MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/" + cgincName);
+        string dest = "Assets/"+baseFolderName+"/" + "Shaders/cgincs/" + cgincName;
         FileUtil.CopyFileOrDirectory(source, dest);
         AssetDatabase.ImportAsset(dest);
     }
