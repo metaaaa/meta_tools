@@ -41,6 +41,11 @@ public class MetaaaFolderInitializer : ScriptableWizard
             FolderName(folder);
         }
 
+        if (!AssetDatabase.IsValidFolder("Assets/"+baseFolderName+"/Shaders/cgincs"))
+        {
+            return;
+        }
+
         var cgincs = Directory.GetFiles(MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/"), "*.cginc", SearchOption.AllDirectories);
         foreach (string cginc in cgincs)
         {

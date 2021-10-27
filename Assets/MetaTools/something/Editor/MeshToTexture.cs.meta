@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4d4138f12b201a048b4845c6c2293dfb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_ViewDataDictionary: {instanceID: 0}
+  - mesh: {instanceID: 0}
+  - infoTexGen: {fileID: 7200000, guid: ce74e1cc447998048be69bdb1bf78a64, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -7,6 +7,7 @@ struct MeshInfo{
 	float3 position;
 	float3 normal;
 	float3 tangent;
+	float2 uv;
 };
 
 // Create a RenderTexture with enableRandomWrite flag and set it
@@ -14,6 +15,8 @@ struct MeshInfo{
 RWTexture2D<float4> OutPosition;
 RWTexture2D<float4> OutNormal;
 RWTexture2D<float4> OutTangent;
+RWTexture2D<float4> OutUv;
+
 StructuredBuffer<MeshInfo> Info;
 int VertCount;
 float Scale;
@@ -47,7 +50,7 @@ float4 eulerToQuaternion(float3 rad)
                   cos(rad.z)*cos(rad.x)*sin(rad.y) - sin(rad.z)*sin(rad.x)*cos(rad.y));
 }
 
-[numthreads(8,8,1)]
+[numthreads(8,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
 	int index = id.y * VertCount + id.x;
@@ -58,4 +61,24 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 	OutPosition[id.xy] 	= float4(rotateQuaternion(qua, info.position * Scale), 1.0);
 	OutNormal[id.xy] 	= float4(rotateQuaternion(qua, info.normal), 1.0);
 	OutTangent[id.xy] 	= float4(rotateQuaternion(qua, info.tangent), 1.0);
+	OutUv[id.xy] 		= float4(info.uv, 0.0, 1.0);
+}
+
+#pragma kernel PolyTex
+
+struct PolyInfo{
+	float3 polygon;
+};
+RWTexture2D<float4> OutPoly;
+StructuredBuffer<PolyInfo> polyInfo;
+int TexWidth;
+
+[numthreads(8,1,1)]
+void PolyTex (uint3 id : SV_DispatchThreadID)
+{
+	int index = id.x;
+	PolyInfo info = polyInfo[index];
+
+	// OutPoly[id.xy] = float4(info.polygon , 1.0);
+	OutPoly[id.xy] = float4(info.polygon / TexWidth , 1.0);
 }

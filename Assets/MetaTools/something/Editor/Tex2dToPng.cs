@@ -13,7 +13,6 @@ public class Tex2dToPng
             return;
         var pngData = tex.EncodeToPNG();
         System.IO.File.WriteAllBytes(Application.dataPath + "/tex.png", pngData);
-        Object.DestroyImmediate(tex);
     }
 }
 
@@ -27,7 +26,6 @@ public class Tex2dToExr
             return;
         var exrData = tex.EncodeToEXR(Texture2D.EXRFlags.CompressZIP);
         System.IO.File.WriteAllBytes(Application.dataPath + "/tex.exr", exrData);
-        Object.DestroyImmediate(tex);
     }
 }
 
@@ -53,7 +51,6 @@ public class RenderTex2dToExr
             byte[] bytes = tex.EncodeToEXR(Texture2D.EXRFlags.CompressZIP);
             System.IO.File.WriteAllBytes(Application.dataPath + "/render_tex.exr", bytes);
 
-            Object.DestroyImmediate(tex);
         }
     }
 }

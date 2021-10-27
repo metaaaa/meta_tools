@@ -40,7 +40,7 @@
 			sampler2D _MainTex, _PosTex, _NmlTex;
 			float4 _PosTex_TexelSize;
 			float _Length, _DT;
-			
+
 			v2f vert (appdata v, uint vid : SV_VertexID)
 			{
 				float t = (_Time.y - _DT) / _Length;
@@ -60,7 +60,7 @@
 				o.uv = v.uv;
 				return o;
 			}
-			
+
 			half4 frag (v2f i) : SV_Target
 			{
 				half diff = dot(i.normal, float3(0,1,0))*0.5 + 0.5;

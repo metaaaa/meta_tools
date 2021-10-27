@@ -13,6 +13,9 @@ public class AnimationClipTextureBaker : MonoBehaviour
     public ComputeShader infoTexGen;
     public Shader playShader;
     public AnimationClip[] clips;
+    public float scale = 1.0f;
+    public Vector3 rotation = new Vector3(0,0,0);
+
 
     public struct VertInfo
     {
@@ -90,6 +93,8 @@ public class AnimationClipTextureBaker : MonoBehaviour
             infoTexGen.GetKernelThreadGroupSizes(kernel, out x, out y, out z);
 
             infoTexGen.SetInt("VertCount", vCount);
+            infoTexGen.SetFloat("Scale", scale);
+            infoTexGen.SetVector("Rotation", rotation);
             infoTexGen.SetBuffer(kernel, "Info", buffer);
             infoTexGen.SetTexture(kernel, "OutPosition", pRt);
             infoTexGen.SetTexture(kernel, "OutNormal", nRt);

@@ -1,4 +1,4 @@
-#define PI acos(-1.0)
+#define PI 3.141592653589
 
 float2 rot(float2 p, float r)
 {
