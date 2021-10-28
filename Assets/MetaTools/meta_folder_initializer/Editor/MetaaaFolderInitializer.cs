@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿namespace MetaTools
+{
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -74,4 +76,5 @@ public class MetaaaFolderInitializer : ScriptableWizard
         FileUtil.CopyFileOrDirectory(source, dest);
         AssetDatabase.ImportAsset(dest);
     }
+}
 }

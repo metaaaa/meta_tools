@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿namespace MetaTools
+{
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeMeshMaker {
@@ -31,4 +33,5 @@ public class CubeMeshMaker {
 
         return mesh;
     }
+}
 }

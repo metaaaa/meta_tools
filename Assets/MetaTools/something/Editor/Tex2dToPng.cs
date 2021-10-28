@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿namespace MetaTools
+{
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -53,4 +55,5 @@ public class RenderTex2dToExr
 
         }
     }
+}
 }

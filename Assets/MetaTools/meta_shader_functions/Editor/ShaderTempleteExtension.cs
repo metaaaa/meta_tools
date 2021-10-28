@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿namespace MetaTools
+{
+using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -33,4 +35,5 @@ public class ShaderTempleteExtension : MonoBehaviour
         string path = MetaToolsEnv.GetMetaToolsPath("meta_shader_functions/Templetes/CRTUpdateTemplete.shader.templete");
         ProjectWindowUtil.CreateScriptAssetFromTemplateFile(path, "NewCRTUpdateShader.shader");
     }
+}
 }

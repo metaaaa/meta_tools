@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿namespace MetaTools
+{
+using UnityEngine;
 using UnityEditor;
 
 public class CubeMeshMakerWizard : ScriptableWizard
@@ -30,4 +32,5 @@ public class CubeMeshMakerWizard : ScriptableWizard
         AssetDatabase.CreateAsset(mesh, path + filename + ".asset");
         AssetDatabase.SaveAssets();
     }
+}
 }

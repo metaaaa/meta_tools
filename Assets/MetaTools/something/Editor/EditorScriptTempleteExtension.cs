@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿namespace MetaTools
+{
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -11,4 +13,5 @@ public class EditorScriptTempleteExtension : MonoBehaviour
         string path = MetaToolsEnv.GetMetaToolsPath( "something/Templetes/ScriptableWizardTemplete.cs.templete");
         ProjectWindowUtil.CreateScriptAssetFromTemplateFile(path, "NewScriptableWizard.cs");
     }
+}
 }

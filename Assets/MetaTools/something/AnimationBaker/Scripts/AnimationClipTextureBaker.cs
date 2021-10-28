@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿namespace MetaTools
+{
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -146,4 +148,5 @@ public class AnimationClipTextureBaker : MonoBehaviour
 #endif
         }
     }
+}
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿namespace MetaTools
+{
+using UnityEngine;
 
 public class RenderTextureToTexture2D : MonoBehaviour
 {
@@ -39,4 +41,5 @@ public class RenderTextureToTexture2D : MonoBehaviour
         RenderTexture.active = null;
         return tex2d;
     }
+}
 }
