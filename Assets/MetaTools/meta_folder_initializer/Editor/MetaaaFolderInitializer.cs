@@ -48,7 +48,7 @@ public class MetaaaFolderInitializer : ScriptableWizard
             return;
         }
 
-        var cgincs = Directory.GetFiles(MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/cgincs/"), "*.cginc", SearchOption.AllDirectories);
+        var cgincs = Directory.GetFiles(MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/"), "*.cginc", SearchOption.AllDirectories);
         foreach (string cginc in cgincs)
         {
             string fileName = cginc.Split('/').Last();

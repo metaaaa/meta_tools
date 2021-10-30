@@ -8,7 +8,7 @@ using System.IO;
 
 public class MetaToolsEnv : MonoBehaviour
 {
-    public static bool IS_PACKAGE_RELEASE = false;
+    public static bool IS_PACKAGE_RELEASE = true;
 
     const string PACKAGE_PATH = "Packages/com.metaaaa.meta_tools/";
 
