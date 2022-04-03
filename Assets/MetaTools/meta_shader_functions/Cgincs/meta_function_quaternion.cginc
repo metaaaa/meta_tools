@@ -37,11 +37,9 @@ float3 angleToRadian(float3 angle)
 // Unityの回転順はZXY
 float4 eulerToQuaternion(float3 rad)
 {
-    rad.x += PI;//Unityの座標系にあわせる
     rad = rad*0.5;
-    rad.xy = -rad.yx;//Unityの座標系にあわせる
-    return float4(cos(rad.z)*cos(rad.x)*cos(rad.y) + sin(rad.z)*sin(rad.x)*sin(rad.y),
-                  sin(rad.z)*cos(rad.x)*cos(rad.y) - cos(rad.z)*sin(rad.x)*sin(rad.y),
-                  cos(rad.z)*sin(rad.x)*cos(rad.y) + sin(rad.z)*cos(rad.x)*sin(rad.y),
-                  cos(rad.z)*cos(rad.x)*sin(rad.y) - sin(rad.z)*sin(rad.x)*cos(rad.y));
+    return float4(cos(rad.x)*cos(rad.y)*cos(rad.z) + sin(rad.x)*sin(rad.y)*sin(rad.z),
+                  sin(rad.x)*cos(rad.y)*cos(rad.z) + cos(rad.x)*sin(rad.y)*sin(rad.z),
+                  cos(rad.x)*sin(rad.y)*cos(rad.z) - sin(rad.x)*cos(rad.y)*sin(rad.z),
+                  cos(rad.x)*cos(rad.y)*sin(rad.z) - sin(rad.x)*sin(rad.y)*cos(rad.z));
 }
