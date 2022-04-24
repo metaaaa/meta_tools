@@ -43,3 +43,39 @@ float4 eulerToQuaternion(float3 rad)
                   cos(rad.x)*sin(rad.y)*cos(rad.z) - sin(rad.x)*cos(rad.y)*sin(rad.z),
                   cos(rad.x)*cos(rad.y)*sin(rad.z) - sin(rad.x)*sin(rad.y)*cos(rad.z));
 }
+
+// YXZ
+float4 eulerToQuaternionInvRotOrder(float3 rad)
+{
+    rad = rad*0.5;
+    return float4(cos(rad.x)*cos(rad.y)*cos(rad.z) - sin(rad.x)*sin(rad.y)*sin(rad.z),
+                  sin(rad.x)*cos(rad.y)*cos(rad.z) - cos(rad.x)*sin(rad.y)*sin(rad.z),
+                  cos(rad.x)*sin(rad.y)*cos(rad.z) + sin(rad.x)*cos(rad.y)*sin(rad.z),
+                  cos(rad.x)*cos(rad.y)*sin(rad.z) + sin(rad.x)*sin(rad.y)*cos(rad.z));
+}
+
+// xyz axis, w rad
+float4 quaternionToAxisAngle(float4 qua)
+{
+    if(qua.w + qua.y + qua.z == 0.0) return float4(1.0, 0.0, 0.0, 0.0);
+    float rad = 2.0 * acos(qua.x);
+    float3 axis = float3(qua.y / sqrt(1.0 - qua.x * qua.x),
+                         qua.z / sqrt(1.0 - qua.x * qua.x),
+                         qua.w / sqrt(1.0 - qua.x * qua.x));
+    return float4(axis, rad);
+}
+
+float3 quaternionToEuler(float4 qua)
+{
+    qua.xyzw = qua.yzwx;
+    float sx = -(2.0 * qua.y * qua.z - 2.0 * qua.x * qua.w);
+    float unlocked = abs(sx) < 0.99999;
+    float3 euler = 0;
+    euler.x = asin(-(2.0 * qua.y * qua.z - 2.0 * qua.x * qua.w));
+    euler.y = unlocked ?
+        atan2((2.0 * qua.x * qua.z + 2.0 * qua.y * qua.w), (2.0 * qua.w * qua.w + 2.0 * qua.z * qua.z - 1.0)) :
+        atan2(-(2.0 * qua.x * qua.z - 2.0 * qua.y * qua.w), 2.0 * qua.w * qua.w + 2.0 * qua.x * qua.x - 1.0);
+    euler.z = unlocked ? 
+        atan2((2.0 * qua.x * qua.y + 2.0 * qua.z * qua.w), (2.0 * qua.w * qua.w + 2.0 * qua.y * qua.y - 1.0)) : 0.0;
+    return euler;
+}
