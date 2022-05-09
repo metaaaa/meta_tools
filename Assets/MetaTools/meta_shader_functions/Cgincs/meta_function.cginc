@@ -95,6 +95,7 @@ float3 getCameraPos()
     return cameraPos;
 }
 
+#include "meta_function_ease.cginc"
 #include "meta_function_quaternion.cginc"
 #include "meta_function_color_space.cginc"
 #include "meta_function_noise.cginc"

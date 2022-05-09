@@ -1,51 +1,17 @@
 ﻿// Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel CSMain
 
-#define PI 3.141592653589
-
 struct MeshInfo{
 	float3 position;
 	float3 normal;
-	float3 tangent;
 };
 
 // Create a RenderTexture with enableRandomWrite flag and set it
 // with cs.SetTexture
 RWTexture2D<float4> OutPosition;
 RWTexture2D<float4> OutNormal;
-RWTexture2D<float4> OutTangent;
 StructuredBuffer<MeshInfo> Info;
 int VertCount;
-float Scale;
-float3 Rotation;
-
-float3 angleToRadian(float3 angle)
-{
-    return PI*angle/180.0;
-}
-
-float4 quaternion(float rad, float3 axis)
-{
-    return float4(cos(rad / 2.0), axis * sin(rad / 2.0));
-}
-
-
-float3 rotateQuaternion(float4 q, float3 pos)
-{
-    return (q.x*q.x - dot(q.yzw, q.yzw)) * pos + 2.0 * q.yzw * dot(q.yzw, pos) + 2 * q.x * cross(q.yzw, pos);
-}
-
-// Unityの回転順はZXY
-float4 eulerToQuaternion(float3 rad)
-{
-    rad.x += PI;//Unityの座標系にあわせる
-    rad = rad*0.5;
-    rad.xy = -rad.yx;//Unityの座標系にあわせる
-    return float4(cos(rad.z)*cos(rad.x)*cos(rad.y) + sin(rad.z)*sin(rad.x)*sin(rad.y),
-                  sin(rad.z)*cos(rad.x)*cos(rad.y) - cos(rad.z)*sin(rad.x)*sin(rad.y),
-                  cos(rad.z)*sin(rad.x)*cos(rad.y) + sin(rad.z)*cos(rad.x)*sin(rad.y),
-                  cos(rad.z)*cos(rad.x)*sin(rad.y) - sin(rad.z)*sin(rad.x)*cos(rad.y));
-}
 
 [numthreads(8,8,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
@@ -53,9 +19,6 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 	int index = id.y * VertCount + id.x;
 	MeshInfo info = Info[index];
 
-	float4 qua = eulerToQuaternion(angleToRadian(Rotation));
-
-	OutPosition[id.xy] 	= float4(rotateQuaternion(qua, info.position * Scale), 1.0);
-	OutNormal[id.xy] 	= float4(rotateQuaternion(qua, info.normal), 1.0);
-	OutTangent[id.xy] 	= float4(rotateQuaternion(qua, info.tangent), 1.0);
+	OutPosition[id.xy] = float4(info.position, 1.0);
+	OutNormal[id.xy] = float4(info.normal, 1.0);
 }
