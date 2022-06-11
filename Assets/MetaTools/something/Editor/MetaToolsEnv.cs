@@ -1,5 +1,6 @@
 ﻿namespace MetaTools
 {
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ using System.IO;
 
 public class MetaToolsEnv : MonoBehaviour
 {
-    public static bool IS_PACKAGE_RELEASE = true;
+    public static bool IS_PACKAGE_RELEASE = false;
 
     const string PACKAGE_PATH = "Packages/com.metaaaa.meta_tools/";
 
@@ -34,4 +35,5 @@ public class MetaToolsEnv : MonoBehaviour
         return relative;
     }
 }
+#endif
 }

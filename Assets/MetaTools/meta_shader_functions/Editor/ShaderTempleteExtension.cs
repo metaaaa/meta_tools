@@ -1,5 +1,6 @@
 ﻿namespace MetaTools
 {
+#if UNITY_EDITOR
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
@@ -36,4 +37,5 @@ public class ShaderTempleteExtension : MonoBehaviour
         ProjectWindowUtil.CreateScriptAssetFromTemplateFile(path, "NewCRTUpdateShader.shader");
     }
 }
+#endif
 }

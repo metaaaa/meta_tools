@@ -1,5 +1,6 @@
 ﻿namespace MetaTools
 {
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 
@@ -33,4 +34,5 @@ public class CubeMeshMakerWizard : ScriptableWizard
         AssetDatabase.SaveAssets();
     }
 }
+#endif
 }

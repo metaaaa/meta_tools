@@ -1,13 +1,11 @@
 namespace MetaTools
 {
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
-#if UNITY_EDITOR
 using UnityEditor;
 using System.IO;
-#endif
 
 public class MeshToTexture : ScriptableWizard
 {
@@ -167,4 +165,5 @@ public class MeshToTexture : ScriptableWizard
 #endif
     }
 }
+#endif
 }

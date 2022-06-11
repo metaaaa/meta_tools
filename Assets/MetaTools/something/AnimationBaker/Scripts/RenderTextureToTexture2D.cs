@@ -1,5 +1,6 @@
 ﻿namespace MetaTools
 {
+#if UNITY_EDITOR
 using UnityEngine;
 
 public class RenderTextureToTexture2D : MonoBehaviour
@@ -42,4 +43,5 @@ public class RenderTextureToTexture2D : MonoBehaviour
         return tex2d;
     }
 }
+#endif
 }
