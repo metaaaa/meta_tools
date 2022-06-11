@@ -1,10 +1,10 @@
+namespace MetaTools.RampTextureGenerator
+{
 using System.IO;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEditor;
-
-namespace MetaTools.RampTextureGenerator
-{
+#if UNITY_EDITOR
     public class RampTextureGeneratorWindow : EditorWindow
     {
         [SerializeField] private string _exportFolder = "RampGenerator/Textures/Ramp/";
@@ -137,4 +137,5 @@ namespace MetaTools.RampTextureGenerator
             return folderPath;
         }
     }
+#endif
 }

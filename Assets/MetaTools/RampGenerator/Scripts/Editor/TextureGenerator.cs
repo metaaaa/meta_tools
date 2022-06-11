@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-
-namespace MetaTools.RampTextureGenerator
+﻿namespace MetaTools.RampTextureGenerator
 {
+using UnityEngine;
+
+#if UNITY_EDITOR
     public class TextureGenerator
     {
         public static Texture2D CreateTexture(Gradient gradient, int width, int height)
@@ -22,4 +23,5 @@ namespace MetaTools.RampTextureGenerator
             return texture;
         }
     }
+#endif
 }
