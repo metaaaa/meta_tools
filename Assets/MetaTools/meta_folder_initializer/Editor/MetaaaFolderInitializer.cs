@@ -49,7 +49,7 @@ public class MetaaaFolderInitializer : ScriptableWizard
             return;
         }
 
-        var cgincs = Directory.GetFiles(MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/cgincs/"), "*.cginc", SearchOption.AllDirectories);
+        var cgincs = Directory.GetFiles(MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/"), "*.cginc", SearchOption.AllDirectories);
         foreach (string cginc in cgincs)
         {
             string fileName = cginc.Split('/').Last();
@@ -72,7 +72,7 @@ public class MetaaaFolderInitializer : ScriptableWizard
 
     void CopyCginc(string cgincName)
     {
-        string source = MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/cgincs/" + cgincName);
+        string source = MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/" + cgincName);
         string dest = "Assets/"+baseFolderName+"/" + "Shaders/cgincs/" + cgincName;
         FileUtil.CopyFileOrDirectory(source, dest);
         AssetDatabase.ImportAsset(dest);
