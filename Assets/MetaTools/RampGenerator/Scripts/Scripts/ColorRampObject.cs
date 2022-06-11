@@ -1,8 +1,8 @@
 namespace MetaTools.RampTextureGenerator
 {
+#if UNITY_EDITOR
 using UnityEngine;
 
-#if UNITY_EDITOR
     public class ColorRampObject : ScriptableObject
     {
         [SerializeField] private Gradient _gradient = new Gradient

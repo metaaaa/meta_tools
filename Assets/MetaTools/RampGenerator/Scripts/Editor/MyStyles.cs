@@ -1,9 +1,9 @@
 ﻿namespace MetaTools.RampTextureGenerator
 {
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
-#if UNITY_EDITOR
     public static class MyStyles
     {
         [System.NonSerialized] public static readonly GUIStyle FooterLabel;

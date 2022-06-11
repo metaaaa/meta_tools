@@ -1,7 +1,7 @@
-﻿using UnityEditor;
-
-namespace MetaTools.RampTextureGenerator
+﻿namespace MetaTools.RampTextureGenerator
 {
+#if UNITY_EDITOR
+using UnityEditor;
     public static class CustomUI
     {
         public static void TextFieldWithUndo(EditorWindow window, string label, ref string text)
@@ -16,4 +16,6 @@ namespace MetaTools.RampTextureGenerator
 
         }
     }
+#endif
+
 }

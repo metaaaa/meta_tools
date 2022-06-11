@@ -1,9 +1,9 @@
-﻿using System.IO;
+﻿namespace MetaTools.RampTextureGenerator
+{
+#if UNITY_EDITOR
+using System.IO;
 using UnityEditor;
 using UnityEngine;
-
-namespace MetaTools.RampTextureGenerator
-{
     [CustomEditor(typeof(ColorRampObject))]
     public class ColorRampObjectEditor : Editor
     {
@@ -34,4 +34,6 @@ namespace MetaTools.RampTextureGenerator
             GUI.DrawTexture(r, component.Texture);
         }
     }
+
+#endif
 }
