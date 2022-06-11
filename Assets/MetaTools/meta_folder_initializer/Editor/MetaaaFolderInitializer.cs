@@ -72,7 +72,7 @@ public class MetaaaFolderInitializer : ScriptableWizard
 
     void CopyCginc(string cgincName)
     {
-        string source = MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/Cgincs/" + cgincName);
+        string source = MetaToolsEnv.GetMetaToolsRelativePath("meta_shader_functions/cgincs/" + cgincName);
         string dest = "Assets/"+baseFolderName+"/" + "Shaders/cgincs/" + cgincName;
         FileUtil.CopyFileOrDirectory(source, dest);
         AssetDatabase.ImportAsset(dest);
