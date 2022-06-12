@@ -141,11 +141,11 @@ public class MeshToTexture : ScriptableWizard
         if (!AssetDatabase.IsValidFolder(subFolderPath))
             AssetDatabase.CreateFolder(folderPath, subFolder);
 
-        var posTex = RenderTextureToTexture2D.Convert(pRt);
-        var normTex = RenderTextureToTexture2D.Convert(nRt);
-        var tanTex = RenderTextureToTexture2D.Convert(tRt);
-        var uvTex = RenderTextureToTexture2D.Convert(uvRt);
-        var triTex = RenderTextureToTexture2D.Convert(triRt);
+        var posTex = MetaTools.RenderTextureToTexture2D.Convert(pRt);
+        var normTex = MetaTools.RenderTextureToTexture2D.Convert(nRt);
+        var tanTex = MetaTools.RenderTextureToTexture2D.Convert(tRt);
+        var uvTex = MetaTools.RenderTextureToTexture2D.Convert(uvRt);
+        var triTex = MetaTools.RenderTextureToTexture2D.Convert(triRt);
         posTex.filterMode = FilterMode.Point;
         normTex.filterMode = FilterMode.Point;
         tanTex.filterMode = FilterMode.Point;

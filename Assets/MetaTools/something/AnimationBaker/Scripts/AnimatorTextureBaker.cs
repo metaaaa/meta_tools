@@ -97,9 +97,9 @@ public class AnimatorTextureBaker : MonoBehaviour
             if (!AssetDatabase.IsValidFolder(subFolderPath))
                 AssetDatabase.CreateFolder(folderPath, subFolder);
 
-            var posTex = RenderTextureToTexture2D.Convert(pRt);
-            var normTex = RenderTextureToTexture2D.Convert(nRt);
-            var tanTex = RenderTextureToTexture2D.Convert(tRt);
+            var posTex = MetaTools.RenderTextureToTexture2D.Convert(pRt);
+            var normTex = MetaTools.RenderTextureToTexture2D.Convert(nRt);
+            var tanTex = MetaTools.RenderTextureToTexture2D.Convert(tRt);
             Graphics.CopyTexture(pRt, posTex);
             Graphics.CopyTexture(nRt, normTex);
             Graphics.CopyTexture(tRt, tanTex);
