@@ -6,6 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using MetaTools;
 
 public class MeshToTexture : ScriptableWizard
 {

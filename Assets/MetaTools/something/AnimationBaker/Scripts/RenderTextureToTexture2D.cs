@@ -2,6 +2,7 @@
 {
 #if UNITY_EDITOR
 using UnityEngine;
+using MetaTools;
 
 public class RenderTextureToTexture2D : MonoBehaviour
 {
