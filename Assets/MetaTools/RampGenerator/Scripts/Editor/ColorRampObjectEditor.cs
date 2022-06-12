@@ -4,12 +4,12 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-    [CustomEditor(typeof(ColorRampObject))]
+    [CustomEditor(typeof(MetaTools.RampTextureGenerator.ColorRampObject))]
     public class ColorRampObjectEditor : Editor
     {
         public override void OnInspectorGUI()
         {
-            var component = target as ColorRampObject;
+            var component = target as MetaTools.RampTextureGenerator.ColorRampObject;
             if (component == null) return;
 
             EditorGUI.BeginChangeCheck();
@@ -28,7 +28,7 @@ using UnityEngine;
 
         public override void OnPreviewGUI(Rect r, GUIStyle background)
         {
-            var component = target as ColorRampObject;
+            var component = target as MetaTools.RampTextureGenerator.ColorRampObject;
             if (component == null) return;
             if (component.Texture == null) return;
             
