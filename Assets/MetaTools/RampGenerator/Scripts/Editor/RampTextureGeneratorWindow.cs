@@ -13,7 +13,7 @@ using UnityEditor;
         private int textureHeight = 1;
         private int textureWidth = 256;
 
-        [MenuItem("AnimationMeshParticleGenerator/Ramp Texture Generator")]
+        [MenuItem("metaaa/Ramp Texture Generator")]
         static void Open()
         {
             GetWindow<RampTextureGeneratorWindow>();
