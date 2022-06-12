@@ -14,10 +14,11 @@ using UnityEngine;
 
             EditorGUI.BeginChangeCheck();
             base.OnInspectorGUI();
-            EditorGUI.EndChangeCheck();
+            if(EditorGUI.EndChangeCheck()){
+                component.ApplyGradient();
+                EditorUtility.SetDirty(component);
+            }
 
-            component.ApplyGradient();
-            EditorUtility.SetDirty(component);
         }
 
         public override bool HasPreviewGUI()
