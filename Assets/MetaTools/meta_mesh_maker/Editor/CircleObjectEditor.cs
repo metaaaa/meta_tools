@@ -15,7 +15,7 @@ using UnityEngine;
             EditorGUI.BeginChangeCheck();
             base.OnInspectorGUI();
             if(EditorGUI.EndChangeCheck()){
-                component.CreateMesh();
+                component.OnParamUpdated();
                 EditorUtility.SetDirty(component);
             }
         }

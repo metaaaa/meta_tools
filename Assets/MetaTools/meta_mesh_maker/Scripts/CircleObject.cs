@@ -4,6 +4,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
@@ -13,9 +14,19 @@ public class CircleObject : ScriptableObject
     public float radius = 0.5f;
 
     [HideInInspector] public Mesh mesh;
+    [HideInInspector] public bool hasSubAsset = false;
 
     public void OnParamUpdated()
     {
+        if(!hasSubAsset){
+            // var subassetCount = AssetDatabase
+            //     .LoadAllAssetsAtPath(AssetDatabase.GetAssetPath(this))
+            //     .Where(x => AssetDatabase.IsSubAsset(x))
+            //     .Count();
+            AssetDatabase.AddObjectToAsset(mesh, this);
+            AssetDatabase.SaveAssets();
+            hasSubAsset = true;
+        }
         CreateMesh();
     }
 
