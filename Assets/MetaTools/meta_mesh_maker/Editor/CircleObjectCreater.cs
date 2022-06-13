@@ -17,6 +17,7 @@ public  static class CircleObjectCreater
         circleObject.CreateMesh();
         var mesh = circleObject.mesh;
         mesh.name = "circle";
+        circleObject.mesh = mesh;
         ProjectWindowUtil.CreateAsset(circleObject, "circleObject.asset");
     }
 }

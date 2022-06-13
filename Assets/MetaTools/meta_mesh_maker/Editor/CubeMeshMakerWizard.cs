@@ -28,7 +28,7 @@ public class CubeMeshMakerWizard : ScriptableWizard
     {
         CubeMeshMaker meshMaker = new CubeMeshMaker();
 
-        Mesh mesh = meshMaker.GenerageMesh(xnum, ynum, znum, scale);
+        Mesh mesh = meshMaker.GenerateMesh(xnum, ynum, znum, scale);
 
         AssetDatabase.CreateAsset(mesh, path + filename + ".asset");
         AssetDatabase.SaveAssets();

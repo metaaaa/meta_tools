@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class CubeMeshMaker {
 
-    public Mesh GenerageMesh(int xnum, int ynum, int znum, Vector3 scale)
+    public Mesh GenerateMesh(int xnum, int ynum, int znum, Vector3 scale)
     {
         Mesh mesh = new Mesh();
 
