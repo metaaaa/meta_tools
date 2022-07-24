@@ -45,7 +45,6 @@ public class CurveTextureObject : ScriptableObject
                 float time = (float)xIndex / (width - 1);
                 var curveVal = curve.Evaluate(time);
                 var color = new Color(curveVal, curveVal, curveVal, curveVal);
-                Debug.Log(color);
                 texture.SetPixel(xIndex, yIndex, color);
             }
         }
