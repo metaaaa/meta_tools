@@ -4,12 +4,12 @@
 using System.IO;
 using UnityEditor;
 using UnityEngine;
-    [CustomEditor(typeof(CircleObject))]
-    public class CircleObjectEditor : Editor
+    [CustomEditor(typeof(CurveTextureObject))]
+    public class CurveTextureEditor : Editor
     {
         public override void OnInspectorGUI()
         {
-            var component = target as CircleObject;
+            var component = target as CurveTextureObject;
             if (component == null) return;
 
             EditorGUI.BeginChangeCheck();
